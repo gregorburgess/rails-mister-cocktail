@@ -1,0 +1,9 @@
+<h1> <%= @cocktail.name %></h1>
+<p>Find me in app/views/cocktails/show.html.erb</p>
+
+<%= link_to 'Back to Cocktail List', cocktails_path, class: 'btn btn-primary' %>
+<%= link_to 'Edit', edit_cocktail_path(@cocktail) %>
+<%= link_to 'Delete', cocktail_path(@cocktail), method: :delete %>
+
+
+

@@ -1,0 +1,6 @@
+<!-- simple_form_for(@cocktail, @dose, html: { class: 'form-inline' }) do |f|-->
+<%= simple_form_for(@dose) do |f| %>
+<%= f.input :description %>
+<%= f.input :ingredient_id, collection: @ingredients %>
+<%= f.submit %>
+<% end %>
