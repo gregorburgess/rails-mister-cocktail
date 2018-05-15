@@ -1,27 +1,14 @@
 <p>Find me in app/views/ingredients/show.html.erb</p>
-<h1>Ingredients#show</h1>
+<h1>Cocktails Filtered by Ingredient</h1>
 
+<p>----------------------------------------------</p>
 
-<h1 class="text-center">Your cocktail that include <%= @ingredient.name %> list</h1>
+<h1 class="text-center">Your cocktail that includes <%= @ingredient.name %> list</h1>
 
-<div class="container">
-  <div class="row">
     <% @ingredient.cocktails.each do |cocktail| %>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card text-center">
+      <p><%= link_to cocktail.name, cocktail_path(cocktail) %></p>
+    <%end%>
 
-          <% if cocktail.picture %>
-            <div class="card-header" style="background-image: url('<%= image_path cocktail.picture%>')">
-            </div>
-          <% else %>
-            <div class="card-header" style="background-image: url('http://www.seriouseats.com/images/2014/11/20141104-cocktail-party-old-fashioneds-holiday-vicky-wasik-3.jpg')">
-            </div>
-          <% end %>
-          <div class="card-body">
-            <%= link_to cocktail.name, cocktail_path(cocktail) %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
+<p>----------------------------------------------</p>
+
+<h4><%= link_to 'Back to Cocktail List', cocktails_path %></h4>

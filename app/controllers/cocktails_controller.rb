@@ -59,16 +59,16 @@ class CocktailsController < ApplicationController
 
     # no need for app/views/restaurants/destroy.html.erb - but here is the destroy code
 
-    # @cocktail = Cocktail.find(params[:id])
-    # @cocktail.destroy
-    # redirect_to cocktails_path
+    @cocktail = Cocktail.find(params[:id])
+    @cocktail.destroy
+    redirect_to cocktails_path
 
     # OR
 
-    respond_to do |format|
-    format.html { redirect_to @cocktails, notice: 'Restaurant was successfully destroyed.' }
-    format.json { head :no_content }
-    end
+    # respond_to do |format|
+    # format.html { redirect_to @cocktails, notice: 'Restaurant was successfully destroyed.' }
+    # format.json { head :no_content }
+    # end
   end
 
 private

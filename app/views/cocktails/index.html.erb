@@ -1,10 +1,14 @@
 <p>Find me in app/views/cocktails/index.html.erb</p>
 <h1>Cocktail List</h1>
 
+<h4><%= link_to 'Search Cocktails by Ingredient', ingredients_path %></h4>
+
+<p>----------------------------------------------</p>
 
 <% @cocktails.each do |cocktail| %>
 <p><%= link_to cocktail.name, cocktail_path(cocktail) %></p>
 <% end %>
 
+<p>----------------------------------------------</p>
 
-<%= link_to 'New Cocktail', new_cocktail_path %>
+<h4><%= link_to 'New Cocktail', new_cocktail_path %></h4>

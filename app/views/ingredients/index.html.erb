@@ -1,8 +1,9 @@
 <p>Find me in app/views/ingredients/index.html.erb</p>
-<h1>Ingredients#index</h1>
+<h1>Ingredients List</h1>
 
+<p>----------------------------------------------</p>
 
-<h1 class="text-center">Your ingredients list</h1>
+<h3 class="text-center">Search for Drinks Containing an Ingredient Below: </h3>
 
 <div class="container">
   <div class="row">
@@ -17,3 +18,8 @@
     <% end %>
   </div>
 </div>
+
+
+<p>----------------------------------------------</p>
+
+<h4><%= link_to 'Back to Cocktail List', cocktails_path %></h4>
