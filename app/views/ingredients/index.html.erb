@@ -1,0 +1,19 @@
+<p>Find me in app/views/ingredients/index.html.erb</p>
+<h1>Ingredients#index</h1>
+
+
+<h1 class="text-center">Your ingredients list</h1>
+
+<div class="container">
+  <div class="row">
+    <% @ingredients.each do |ingredient| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <%= link_to ingredient.name, ingredient_path(ingredient) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

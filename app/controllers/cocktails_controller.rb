@@ -1,11 +1,14 @@
 class CocktailsController < ApplicationController
-  before_action :set_cocktail, only: [:show, :edit, :update, :destroy]
+  # before_action :set_cocktail, only: [:show, :edit, :update, :destroy]
 
   def index
     @cocktails = Cocktail.all
   end
 
   def show
+    @cocktail = Cocktail.find(params[:id])
+    @ingredients = Ingredient.all - @cocktail.ingredients
+    @dose = Dose.new
   end
 
   def new
@@ -15,17 +18,26 @@ class CocktailsController < ApplicationController
   # Using Simple Form
 
   def create
-    @cocktail = Cocktail.new(cocktail_params)
 
-    respond_to do |format|
-      if @cocktail.save
-        format.html { redirect_to @cocktail, notice: 'Cocktail was successfully created.' }
-        format.json { render :show, status: :created, location: @cocktail }
-      else
-        format.html { render :new }
-        format.json { render json: @cocktail.errors, status: :unprocessable_entity }
-      end
+    @cocktail = Cocktail.new(cocktail_params)
+    if @cocktail.save
+      redirect_to cocktail_path(@cocktail)
+    else
+      render :new
     end
+
+  # OR
+
+  #   respond_to do |format|
+  #     if @cocktail.save
+  #       format.html { redirect_to @cocktail, notice: 'Cocktail was successfully created.' }
+  #       format.json { render :show, status: :created, location: @cocktail }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @cocktail.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+
   end
 
   def edit
@@ -44,15 +56,19 @@ class CocktailsController < ApplicationController
   end
 
   def destroy
-    @cocktail = Cocktail.find(params[:id])
-    @cocktail.destroy
-    redirect_to cocktails_path
-    # no need for app/views/restaurants/destroy.html.erb
 
-    # respond_to do |format|
-    # format.html { redirect_to @cocktails, notice: 'Restaurant was successfully destroyed.' }
-    # format.json { head :no_content }
-    # end
+    # no need for app/views/restaurants/destroy.html.erb - but here is the destroy code
+
+    # @cocktail = Cocktail.find(params[:id])
+    # @cocktail.destroy
+    # redirect_to cocktails_path
+
+    # OR
+
+    respond_to do |format|
+    format.html { redirect_to @cocktails, notice: 'Restaurant was successfully destroyed.' }
+    format.json { head :no_content }
+    end
   end
 
 private

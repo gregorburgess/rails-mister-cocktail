@@ -1,9 +1,21 @@
-<h1> <%= @cocktail.name %></h1>
 <p>Find me in app/views/cocktails/show.html.erb</p>
+<h1> <%= @cocktail.name %></h1>
+<%= link_to 'Delete Drink', cocktail_path(@cocktail), method: :delete %>
+
+<p>Ingredient List Here:</p>
+
+<p>
+<% @cocktail.doses.each do |dose| %>
+<%= dose.ingredient.name %> - <%= dose.description %>
+<% end %>
+</p>
+
+<p>Form Here:</p>
+
+<%= render 'doses/form', cocktail: @cocktail, dose: @dose, ingredients: @ingredients %>
 
 <%= link_to 'Back to Cocktail List', cocktails_path, class: 'btn btn-primary' %>
-<%= link_to 'Edit', edit_cocktail_path(@cocktail) %>
-<%= link_to 'Delete', cocktail_path(@cocktail), method: :delete %>
+
 
 
 

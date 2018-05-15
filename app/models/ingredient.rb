@@ -1,5 +1,6 @@
 class Ingredient < ApplicationRecord
   has_many :doses
+  has_many :cocktails, through: :doses
   # before_destroy :check_use_of_in_cocktails
 
 

@@ -1,6 +1,6 @@
-<!-- simple_form_for(@cocktail, @dose, html: { class: 'form-inline' }) do |f|-->
-<%= simple_form_for(@dose) do |f| %>
-<%= f.input :description %>
-<%= f.input :ingredient_id, collection: @ingredients %>
-<%= f.submit %>
+<p>I'm a partial found in app/views/c/_form.html.erb</p>
+<%= simple_form_for([cocktail, dose]) do |f| %>
+  <%= f.input :ingredient_id, collection: ingredients %>
+  <%= f.input :description %>
+  <%= f.submit %>
 <% end %>
